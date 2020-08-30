@@ -73,5 +73,17 @@ public class SectionService {
 			return new ResponseData(new Response("DELETED"),HttpStatus.OK);
 		
 	}
+	
+	public ResponseData renameSection(String oldName,String newName) {
+		File oldfile = new File( ROOT_PATH + ROOT_FILE_NAME +"\\"+ oldName);
+		File newfile = new File( ROOT_PATH + ROOT_FILE_NAME +"\\"+ newName);
+		boolean folder = oldfile.renameTo(newfile);
+//		System.out.println(oldfile + "\n"+newfile);
+		if(!folder)
+			return new ResponseData(new Response("ERROR"),HttpStatus.FORBIDDEN);
+		else
+			return new ResponseData(new Response("RENAMED"),HttpStatus.OK);
+		
+	}
 
 }

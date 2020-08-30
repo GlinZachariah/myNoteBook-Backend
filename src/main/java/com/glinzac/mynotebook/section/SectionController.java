@@ -3,6 +3,7 @@ package com.glinzac.mynotebook.section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,6 @@ public class SectionController {
 	public ResponseData addNewSection(@RequestBody RequestModel model) {
 		return service.saveNewSection(model.value.toString());
 	}
-//	getSection
 	
 	/** 
 	 * get all the existing section details
@@ -37,9 +37,9 @@ public class SectionController {
 	public ResponseData getSectionDetails() {
 		return service.getSectionDetails();
 	}
-//	deleteSection
 	
 	/**
+	 * delete the existing section
 	 * @param model
 	 * @return
 	 */
@@ -47,7 +47,18 @@ public class SectionController {
 	public ResponseData deleteSection(@RequestBody RequestModel model) {
 		return service.deleteSection(model.getValue().toString());
 	}
-//	editSection
-	
+
+
+	/**
+	 * rename an existing section
+	 * @param model
+	 * @return
+	 */
+	@PutMapping("/editSection")
+	public ResponseData renameSection(@RequestBody RequestModel model) {
+		String oldName = model.getValue().get("oldName").asText();
+		String newName = model.getValue().get("newName").asText();
+		return service.renameSection(oldName,newName);
+	}
 	
 }
