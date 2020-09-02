@@ -16,6 +16,11 @@ public class SectionService {
 
 	 
 
+	/**
+	 * add a new section
+	 * @param name
+	 * @return
+	 */
 	public ResponseData saveNewSection(String name) {
 		File currentFolder = new File( ROOT_PATH + ROOT_FILE_NAME + "\\"+name);
 		boolean status = currentFolder.mkdir();
@@ -30,6 +35,10 @@ public class SectionService {
 	
 	
 	
+	/**
+	 * get existing section details
+	 * @return
+	 */
 	public ResponseData getSectionDetails() {
 		File file = new File( ROOT_PATH + ROOT_FILE_NAME );
 		if(!file.exists()) {
@@ -54,6 +63,11 @@ public class SectionService {
 	}
 	
 	
+	/**
+	 * deleting an existing section
+	 * @param sectionName
+	 * @return
+	 */
 	public ResponseData deleteSection(String sectionName) {
 		File file = new File( ROOT_PATH + ROOT_FILE_NAME +"\\"+ sectionName);
 		System.out.println(ROOT_PATH + ROOT_FILE_NAME +"\\"+ sectionName);
@@ -74,6 +88,12 @@ public class SectionService {
 		
 	}
 	
+	/**
+	 * renaming an exisitng section
+	 * @param oldName
+	 * @param newName
+	 * @return
+	 */
 	public ResponseData renameSection(String oldName,String newName) {
 		File oldfile = new File( ROOT_PATH + ROOT_FILE_NAME +"\\"+ oldName);
 		File newfile = new File( ROOT_PATH + ROOT_FILE_NAME +"\\"+ newName);
