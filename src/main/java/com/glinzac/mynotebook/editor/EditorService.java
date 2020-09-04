@@ -21,6 +21,7 @@ public class EditorService {
 	public ResponseData getFile(String sectionName, String pageName) {
 		String data = "";
 		File fileData = new File( ROOT_PATH + ROOT_FILE_NAME + "\\"+sectionName+"\\"+pageName+".html");
+		System.out.println(ROOT_PATH + ROOT_FILE_NAME + "\\"+sectionName+"\\"+pageName+".html");
 		try {
 			Scanner scan = new Scanner(fileData);
 			while(scan.hasNextLine()) {
